@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import store from './store'
 import { Provider } from 'react-redux'
 
-// ReactDOM.render() method is is no longer supported in React 18,
+// ReactDOM.render() method is is no longer supported in React 18
+// (in this project React has 17th version, so this comment is an improvement),
 // it's better to use the createRoot() method in newer versions of React
 ReactDOM.render(
   <React.StrictMode>
