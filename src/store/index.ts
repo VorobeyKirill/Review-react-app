@@ -5,6 +5,13 @@ export default configureStore({
         list: (state = {todos: []}, action) => {
             switch (action.type) {
                 case 'ADD_TODO': {
+                    // Reducer should be a pure function, you should always return a new state object, not modify the current one
+                    // How to fix:
+                    // return {
+                    //     ...state,
+                    //     todos: [...state.todos. action.payload]
+                    // }
+
                     const newState = state;
                     newState.todos.push(action.payload);
                     return newState;

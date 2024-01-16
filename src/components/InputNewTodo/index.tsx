@@ -12,8 +12,13 @@ type InputNewTodoState = {
 }
 
 export class InputNewTodo extends React.Component<InputNewTodoProps, InputNewTodoState> {
+    // It's a good practice to add props destructuring, so you'll not write this.props every time
+    // Example: const { todoTitle, onChange, onSubmit } = this.props;
+
+    // prevState and snapshot are not used inside this lifecycle method, you can remove them
     componentDidUpdate(prevProps: Readonly<InputNewTodoProps>, prevState: Readonly<InputNewTodoState>, snapshot?: any) {
         if (this.props.todoTitle !== prevProps.todoTitle) {
+            // It would be good to have constructor() method, where you'll initialize this.state with initial value
             this.setState({value: this.props.todoTitle})
         }
     }
@@ -23,12 +28,14 @@ export class InputNewTodo extends React.Component<InputNewTodoProps, InputNewTod
     }
 
     handleKeyDown = (event: React.KeyboardEvent) => {
+        // event.keyCode is deprecated, you should change it to: event.key === 'Enter'
         if (event.keyCode !== 13) {
             return;
         }
 
         event.preventDefault();
-
+        // It's better to use const/let variables, var is outdated
+        // Variables should have more clear(useful) names, for example: trimmedInputValue
         var val = this.state.value.trim();
 
         if (val) {

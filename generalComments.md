@@ -8,4 +8,10 @@ Also it can help to have the similar code style for all developers in a big team
 
 4. There is no `.prettierrc.json` file. Prettier is very useful for having the same code style (indents, quotes, trailing commas) for all developers in a big team.
 
-5.
+5. It's better to use BEM className naming pattern (or another one), instead of random naming.
+
+6. Methods/functions doen't have return values, you should always add them, because you're using TypeScript in this project.
+
+7. Try to avoid using `any` type at all.
+
+8. In React 17 it's better to use React Functional components with hooks, class components are outdated

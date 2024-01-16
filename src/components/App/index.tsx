@@ -9,7 +9,7 @@ import {
 function App() {
     // type Todo from the MainApp component should be used instead of any here
     // It's a good practice to move selector function separately above the component or to the separate file
-    // We can simplify the function inside the useSelector: (state: StateInterface) => state.list.todos
+    // You can simplify the function inside the useSelector: (state: StateInterface) => state.list.todos
     const todos = useSelector((state: {list: { todos: any[] }}) => state.list.todos);
 
   return (
@@ -23,7 +23,7 @@ function App() {
         {/*<img src={logo} className="App-logo" alt="logo" />*/}
       </header>
         {/* MAIN APP: */}
-        {/* Better to wrap <MainApp> in a <main> tag for accessibility, since we already have <header> and <footer> */}
+        {/* Better to wrap <MainApp> in a <main> tag for accessibility, since you already have <header> and <footer> */}
         <MainApp todos={todos}/>
 
         {/* Remove unnecessary curly braces around the className */}
