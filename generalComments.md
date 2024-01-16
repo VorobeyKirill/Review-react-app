@@ -14,4 +14,10 @@ Also it can help to have the similar code style for all developers in a big team
 
 7. Try to avoid using `any` type at all.
 
-8. In React 17 it's better to use React Functional components with hooks, class components are outdated
+8. In React 17 it's better to use React Functional components with hooks, class components are outdated.
+
+9. There are many places with unclear variables/functions names. Their names should be useful, to read them and fully understand what their purpose is.
+
+10. Folders/files structure is okay for a small project, but expanding the project may be difficult. It would be nice to add files with constants and types.
+
+11. Lots of unnecessary console.log() functions.

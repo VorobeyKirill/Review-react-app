@@ -6,6 +6,7 @@
     text-align: left;
     margin-bottom: 10px;
     padding-left: 10px;
+    /* It's better to use hex or rgb color values */
     background: lightgrey;
     align-items: center;
 }

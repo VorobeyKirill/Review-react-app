@@ -47,10 +47,12 @@
 }
 
 .App-footer-link {
+  /* It's better to use hex or rgb color values */
   color: black;
   font-size: unset;
 }
 .App-footer-link:visited {
+  /* It's better to use hex or rgb color values */
   color: gray;
   opacity: 0.5;
 }

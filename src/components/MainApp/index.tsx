@@ -35,7 +35,7 @@ class Index extends React.Component<MainAppProps, MainAppState> {
         this.setState({ todoTitle })
     }
 
-    // Type Todo should be used here instead of any (here and everywhere below)
+    // Type Todo should be used here instead of any
     handleSubmitTodo = (todo: any) => {
         this.props.addTodo(todo)
     }
@@ -47,7 +47,7 @@ class Index extends React.Component<MainAppProps, MainAppState> {
         window.allTodosIsDone = true;
 
         // Naming of the variable inside the map loop (t) is unclear, it's better to name it just 'todo'
-        // It's better to use .every() method here
+        // It's better to use .every() method here, because there is an error, if we select/unselect only the last item -> 'all todos is done' checkbox will be checked/unchecked
         // Example:
         // window.allTodosIsDone = this.props.todos.every(todo => todo.isDone);
         this.props.todos.map(t => {
@@ -62,11 +62,14 @@ class Index extends React.Component<MainAppProps, MainAppState> {
             <div>
                 {/* You provided a `checked` prop to a form field without an `onChange` handler.
                 This will render a read-only field. If the field should be mutable use `defaultChecked`.
-                Otherwise, set either `onChange` or `readOnly`.
-                Also for correct work the variable inside checked={} attribute should be state variable, props or redux state field*/}
+                Otherwise, set either `onChange` or `readOnly`. */}
                 <Form.Check type="checkbox" label="all todos is done!" checked={window.allTodosIsDone}/>
                 <hr/>
                 <InputNewTodo todoTitle={todoTitle} onChange={this.handleTodoTitle} onSubmit={this.handleSubmitTodo}/>
+                {/* It's better to have a clear naming inside map() loop.
+                    For example .map((todo, index) => ())
+                */}
+                {/* Each child (<div> here) in a list should have a unique "key" prop */}
                 {this.props.todos.map((t, idx) => (
                     <div className={styles.todo} >
                         {t.title}
@@ -75,9 +78,22 @@ class Index extends React.Component<MainAppProps, MainAppState> {
                         {/* It's better to move th whole onChange function logic to the separate class method (handleTodoChange), because it looks messy right now */}
                         <Form.Check
                             style={{ marginTop: -8, marginLeft: 5 }}
-                            type="checkbox" checked={t.isDone} onChange={(e) => {
+                            type="checkbox" checked={t.isDone} onChange={() => {
                             const changedTodos = this.props.todos.map((t, index) => {
+                                // This function inside map() can be improved
+                                // Example:
+                                // if (index !== idx) {
+                                //     return t;
+                                // }
+                                //
+                                // const todoItemClone = { ...t }
+                                //
+                                // todoItemClone.isDone = !todoItemClone.isDone;
+                                //
+                                // return todoItemClone
+
                                 const res = { ...t }
+                                // Avoid using == comparison operator, because it performs type conversion. It's better to use === operator
                                 if (index == idx) {
                                     res.isDone = !t.isDone;
                                 }
@@ -95,13 +111,17 @@ class Index extends React.Component<MainAppProps, MainAppState> {
     }
 }
 
+// Actions types can be moved to a separate file, so you'll reuse them here and in the reducer
 export default connect(
     (state) => ({}),
     (dispatch) => ({
+        // Type Todo should be used here instead of any
         addTodo: (todo: any) => {
             dispatch({type: 'ADD_TODO', payload: todo});
         },
+        // Type Todo should be used here instead of any
         changeTodo: (todos: any) => dispatch({type: 'CHANGE_TODOS', payload: todos}),
+        // removeTodo is not used anywhere
         removeTodo: (index: number) => dispatch({type: 'REMOVE_TODOS', payload: index}),
     })
 
