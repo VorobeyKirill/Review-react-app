@@ -5,7 +5,8 @@ export default configureStore({
         list: (state = {todos: []}, action) => {
             switch (action.type) {
                 case 'ADD_TODO': {
-                    // Application crashes here! Because:
+                    // Application crashes here!
+                    // Because:
                     // Reducer should be a pure function, you should always return a new state object, not modify the current one
                     // How to fix:
                     // return {

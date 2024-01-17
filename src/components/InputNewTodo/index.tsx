@@ -40,6 +40,7 @@ export class InputNewTodo extends React.Component<InputNewTodoProps, InputNewTod
 
         if (val) {
             this.props.onSubmit({
+                // Why do you check trimmed value above and then use value from the state here. I think there should be 'title: val'
                 title: this.state.value,
                 isDone: false,
             });

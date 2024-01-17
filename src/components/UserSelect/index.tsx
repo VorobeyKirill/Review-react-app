@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './UserSelect.module.css';
 
 type UserSelectProps = {
-    // user prop is used only in the console.log, but will cause rerenders, if it changes, better to remove it from props
+    // user prop is used only in the console.log, but will cause rerenders, if it changes, better to remove it from the props
     user?: number,
     idx: number,
 }
@@ -20,7 +20,7 @@ function UserSelect(props: UserSelectProps) {
     React.useEffect(
         () => {
             // It's a good practice to use async/await for fetch requests(promises)
-            // Also it's a good practice to use AbortController abort() method in the return statement in UseEffect to abort running requests, if the component unmount
+            // Also it's a good practice to use AbortController abort() method in the return statement in UseEffect to abort running requests, if the component unmounts
             console.log('userSelect');
             fetch('https://jsonplaceholder.typicode.com/users/').then(
                 (users) => users.json(),

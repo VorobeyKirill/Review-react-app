@@ -61,8 +61,7 @@ class Index extends React.Component<MainAppProps, MainAppState> {
         return (
             <div>
                 {/* You provided a `checked` prop to a form field without an `onChange` handler.
-                This will render a read-only field. If the field should be mutable use `defaultChecked`.
-                Otherwise, set either `onChange` or `readOnly`. */}
+                This will render a read-only field. If the field should be mutable use `defaultChecked`. */}
                 <Form.Check type="checkbox" label="all todos is done!" checked={window.allTodosIsDone}/>
                 <hr/>
                 <InputNewTodo todoTitle={todoTitle} onChange={this.handleTodoTitle} onSubmit={this.handleSubmitTodo}/>
@@ -74,8 +73,8 @@ class Index extends React.Component<MainAppProps, MainAppState> {
                     <div className={styles.todo} >
                         {t.title}
                         <UserSelect user={t.user} idx={idx}/>
-                        {/* It's not a good practice to use inline styles (unless it's not a  style library) */}
-                        {/* It's better to move th whole onChange function logic to the separate class method (handleTodoChange), because it looks messy right now */}
+                        {/* It's not a good practice to use inline styles (unless it's not a  styling library) */}
+                        {/* It's better to move all the logic of the onChange function into a separate class method (handleTodoChange), because it looks messy right now */}
                         <Form.Check
                             style={{ marginTop: -8, marginLeft: 5 }}
                             type="checkbox" checked={t.isDone} onChange={() => {
@@ -119,7 +118,7 @@ export default connect(
         addTodo: (todo: any) => {
             dispatch({type: 'ADD_TODO', payload: todo});
         },
-        // Type Todo should be used here instead of any
+        // Type Todo[] should be used here instead of any
         changeTodo: (todos: any) => dispatch({type: 'CHANGE_TODOS', payload: todos}),
         // removeTodo is not used anywhere
         removeTodo: (index: number) => dispatch({type: 'REMOVE_TODOS', payload: index}),

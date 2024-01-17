@@ -10,7 +10,8 @@ Also it can help to have the similar code style for all developers in a big team
 
 5. It's better to use BEM className naming pattern (or another one), instead of random naming.
 
-6. Methods/functions doen't have return values, you should always add them, because you're using TypeScript in this project.
+6. Methods/functions don't have return values, you should always add them, because you're using TypeScript in this project.
+Also a lot of places with missing types for function arguments, loop callback functions arguments.
 
 7. Try to avoid using `any` type at all.
 
